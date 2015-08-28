@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+   xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring" autoStartup="true">
+        <route id="example-route" autoStartup="true">
+            <description>Example Camel Route</description>
+            <from uri="timer:foo?period=1s" />
+      			<transform>
+      				<simple>Hello World ${date:now:yyyy-MM-dd HH:mm:ss} => I am OpenSource Knight</simple>
+      			</transform>
+            <to uri="stream:out"/>
+        </route>
+    </camelContext>
+</beans>

@@ -1,0 +1,44 @@
+Hi, I am OpenSource Knight :-)
+
+This video will introduce:
+  1. How to start Apache Karaf.
+     - Download.
+     - Path to start.
+  2. Create 'Hello World' examle with Apache Camel on Karaf:
+     - The source is a timer.
+     - The destination is stream out(will display in console).
+
+The platform:
+  - 1.7 is the version of Java to use in this video.
+  - Apache Karaf 3.0.4(Require Java 1.?)
+
+ok, let us start now :)
+
+1. Check the version of current Java:
+2. Go to http://karaf.apache.org to download Karaf: You can choose any versions, in this video I use Karaf 3.0.4
+3. Extract and go to bin/ folder.
+4. Apache Karaf supports different start mode(Regular, Server and Background). For example, enter "./karaf" to start Karaf in Regular mode now :)
+5. After waiting, the console will look like this.
+6. Before we can use Apache Camel, we have to install it by this commands: "feature:repo-add camel" and follow by "feature:install camel camel-stream"
+7. Create a xml file with the following content, then copy it to deploy folder(one of the Karaf folders):
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+   xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring" autoStartup="true">
+        <route id="example-route" autoStartup="true">
+            <description>Example Camel Route</description>
+            <from uri="timer:foo?period=1s" />
+      			<transform>
+      				<simple>Hello World ${date:now:yyyy-MM-dd HH:mm:ss}</simple>
+      			</transform>
+            <to uri="stream:out"/>
+        </route>
+    </camelContext>
+</beans>
+
+8. Let us enjoy! ^_^
+
+Thank for watching.
