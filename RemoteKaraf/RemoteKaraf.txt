@@ -1,0 +1,19 @@
+Hi, I am Opensource Knight!
+
+Today, I will introduce:
+  - How to remote running Apache Karaf Instance by using System native clients.
+  - How to remote running Apache Karaf Instance by using Karaf Client.
+  - Using org.apache.karaf.shell.cfg file.
+
+1. Start an Apache Karaf Instance(as a server).
+2. Open a Terminal program. For example, I use Guake Terminal.
+3. Connect the server by using standard ssh command, Karaf has default username and password is karaf/karaf, and default port is 8101
+for example, I connect to localhost via command: ssh -p 8101 karaf@localhost
+4. Ok, the second way is using Karaf client, start client with following parameters:
+  -a: port number(8101 by default)
+  -h: host address
+  -u: username
+For example, I go to /bin folder and use this command: ./client -a 8191 -h localhost -u karaf
+5. Karaf use /etc/org.apache.karaf.shell.cfg file to store settings, for example, we can change 8101 port to another. Let me show:
+
+Thank you for watching ^_^
